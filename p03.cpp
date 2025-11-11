@@ -1,8 +1,8 @@
 /*
  * This program evaluates the performance of improved insertion sort.
  * ----------------------------------------------
- * Author:   John Smith
- * email:    xxx@uco.edu
+ * Author:   Beaux Dolf, Jacob Simon
+ * email:    bdolf1@uco.edu
  * ----------------------------------------------
  */
 
@@ -24,8 +24,10 @@ using std::istream, std::ostream, std::ofstream;
 /*
  * Handle command line error
  */
+
 struct CommandLineException {
     CommandLineException(int max, int provided) {
+        
         cout << endl;
         cout << "Number of command line arguments is wrong." << endl;
         cout << provided << " arguments were entered, and " << max << " are needed." << endl;
@@ -85,14 +87,23 @@ void PrintResult(int* arr, ostream& o1, ostream& o2, int size, double duration) 
  * Your implemention of the insertion sort.
  */
 void MyInsertionSort(int* arr, int size) {
-  /*** TODO: put your code here ***/
+  int i, j, key;
+  for (i = 1; i < size; i++){
+    key = arr[i];                              //element to be tested and inserted
+    j = i - 1;                                //index of the previous element in the sorted portion
+    while (j >= 0 && arr[j] > key){ 
+      arr[j+1] = arr[j];                    //shifting element to the right
+      j--;                                 //move to the next element on the left
+    }
+    arr[j+1] = key;                       //insert the element at the correct position
+  }
 }
 
 /*
  * Your implemention of the binary insertion sort.
  */
 void MyImprovedSort(int* arr, int size) {
-  /*** TODO: put your code here ***/
+  
 }
 
 /*
