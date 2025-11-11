@@ -87,15 +87,15 @@ void PrintResult(int* arr, ostream& o1, ostream& o2, int size, double duration) 
  * Your implemention of the insertion sort.
  */
 void MyInsertionSort(int* arr, int size) {
-  int j, i, k, mid;
-  for (j = 1; j < size; j++){
-    i = 1;
-    while (arr[j] > arr[i]){i++;}
-    mid = arr[j];
-    for (k = 0; k < j-i-1; k++){
-      arr[j - k] = arr[j - k - 1];
+  int j, i, k, temp;
+  for (i = 1; i < size; i++){
+    j = 0;
+    while (arr[i] > arr[j]){j++;}
+    temp = arr[i];
+    for (k = 0; k <= i-j-1; k++){
+      arr[i - k] = arr[i - k - 1];
     }
-    arr[i] = mid;
+    arr[j] = temp;
   }
 }
 
@@ -103,7 +103,25 @@ void MyInsertionSort(int* arr, int size) {
  * Your implemention of the binary insertion sort.
  */
 void MyImprovedSort(int* arr, int size) {
- 
+  int i, j, high, low, mid, temp;
+  for (i=1; i < size; i++){
+    low = 0;
+    high = i-1;
+    temp = arr[i];
+    while (low <= high){
+      mid = (low + high) / 2;
+      if (temp < arr[mid]){
+        high = mid - 1;
+      }
+      else{
+        low = mid + 1;
+      }
+    for (j = i - 1; j >= low; j--){
+      arr[j + 1] = arr[j];
+    }
+    arr[low] = temp;
+    }
+  }
 }
 
 /*
